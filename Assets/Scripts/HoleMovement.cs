@@ -99,9 +99,9 @@ public class HoleMovement : MonoBehaviour
         holeVerticesCount = holeVerticies.Count;
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(holeCenter.position, radius);
-    }
+    }*/
 }
