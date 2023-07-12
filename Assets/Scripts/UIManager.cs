@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         progressFillImage.fillAmount = 0f;
+        SetLevelProgressText();
     }
 
     private void SetLevelProgressText()
