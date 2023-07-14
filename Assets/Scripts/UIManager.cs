@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -44,6 +45,6 @@ public class UIManager : MonoBehaviour
     public void UpdateLevelProgrees()
     {
         float value = 1f - ((float)Level.Instance.objectsInScene / Level.Instance.totalObjects);
-        progressFillImage.fillAmount = value;
+        progressFillImage.DOFillAmount(value, .4f);
     }
 }
