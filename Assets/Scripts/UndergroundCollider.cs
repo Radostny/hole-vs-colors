@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +15,13 @@ public class UndergroundCollider : MonoBehaviour
             if (tag.Equals("Obstacle"))
             {
                 Game.isGameover = true;
+                Camera.main.transform
+                    .DOShakePosition(1f, .2f, 20, 90f)
+                    .OnComplete(() =>
+                    {
+                        Level.Instance.RestartLevel();
+                    });
+
             }
             if (tag.Equals("Object"))
             {
@@ -21,7 +29,18 @@ public class UndergroundCollider : MonoBehaviour
                 UIManager.Instance.UpdateLevelProgrees();
                 
                 Destroy(other.gameObject);
+
+                if (Level.Instance.objectsInScene == 0)
+                {
+                    UIManager.Instance.ShowLevelCompletedUI();
+                    Invoke("NextLevel", 2f);
+                }
             }
+        }
+
+        void NextLevel()
+        {
+            Level.Instance.LoadNextLevel();
         }
         
         
